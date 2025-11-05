@@ -1,3 +1,5 @@
+# Código fuente en C++
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -166,4 +168,71 @@ void generobinario(Nodo* raiz) {
     } else {
         cout << "El árbol se identifica como NO binario porque " << motivo_nega << endl;
     }
+}
+
+// Esta función llama a la función esa_ondaesbinaria para leer el árbol y devolver un valor que procesa esta función e imprime si es binaria o no.
+
+//Menu para seleccionar la opcion que se desea utilizar.
+int main() {
+    Nodo *raiz = NULL;
+    int opcion;
+
+    do {
+        cout << "\n***Menu tipos de arboles***" << endl;
+        cout << "1. Establecer una raiz" << endl;
+        cout << "2. Agregar hijos a un nodo" << endl;
+        cout << "3. Mostrar arbol creado" << endl;
+        cout << "4. Ordenar nodos en los 3 órdenes" << endl;
+        cout << "5. Verificar si es un árbol binario" << endl;
+        cout << "6. Salir" << endl;
+        cout << "Seleccione una opcion del menu: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1: {
+                if (raiz != NULL) {
+                    cout << "La raíz ya existe." << endl;
+                } else {
+                    int valorRaiz;
+                    cout << "Ingrese el valor de la raíz: ";
+                    cin >> valorRaiz;
+                    raiz = crearNodoNuevo(valorRaiz);
+                    cout << "Raíz creada correctamente." << endl;
+                }
+                break;
+            }
+
+            case 2:
+                agregarNodo(raiz);
+                break;
+
+            case 3:
+                if (raiz == NULL)
+                    cout << "El árbol está vacío.\n";
+                else {
+                    cout << "Estructura del árbol:\n";
+                    imprimirArbol(raiz);
+                }
+                break;
+
+            case 4:
+                leerarbol(raiz);
+                break;
+
+            case 5:
+                generobinario(raiz);
+                break;
+
+            case 6:
+                cout << "Saliendo del programa..." << endl;
+                break;
+
+            default:
+                cout << "La opcion es invalida, ingrese otro numero." << endl;
+                break;
+        }
+
+    } while (opcion != 6);
+
+    return 0;
 }
